@@ -24,3 +24,29 @@ export type IWeb3ConnectedContextState = {
   selectedWallet: string;
   setSelectedWallet: (value: string) => any;
 };
+
+export type IWallet = {
+  name: string;
+  icon: string;
+  url: string;
+  text: string;
+  isInstalled: boolean;
+};
+
+export const WALLETS = [
+  {
+    name: "subwallet-js",
+    icon: "/assets/wallets/subwallet.svg",
+    url: "https://subwallet.app/",
+  },
+  {
+    name: "polkadot-js",
+    icon: "/assets/wallets/polkadot.svg",
+    url: "https://polkadot.js.org/extension/",
+  },
+  {
+    name: "talisman",
+    icon: "/assets/wallets/talisman.svg",
+    url: "https://www.talisman.xyz/",
+  },
+];
