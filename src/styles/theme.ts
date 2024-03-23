@@ -2,7 +2,7 @@ import { ThemeOptions, createTheme } from "@mui/material/styles";
 
 export const themeOptions: ThemeOptions = {
   palette: {
-    mode: "light",
+    mode: "dark",
     primary: {
       main: "#6e27e4",
     },
@@ -11,6 +11,7 @@ export const themeOptions: ThemeOptions = {
     },
     text: {
       primary: "rgba(255,255,255,1)",
+      secondary: "#555555",
     },
     background: {
       default: "#15034f",
