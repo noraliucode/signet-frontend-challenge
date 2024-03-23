@@ -19,10 +19,7 @@ const PureProxyManager: React.FC = () => {
   };
 
   const handleClick = async () => {
-    console.log("handleClick 01");
-
     if (!api || !signer || !injector) return;
-    console.log("handleClick 02");
     setLoading(true);
     try {
       const result: ProxyAccount | string | undefined = await createPure(
@@ -31,18 +28,14 @@ const PureProxyManager: React.FC = () => {
         injector,
         setLoading
       );
-      console.log("handleClick 03");
-      console.log("result", result);
 
       if (!result) return;
       if (typeof result === "string") {
         setOpen(true);
         setMessage(result);
-        console.log("handleClick 04");
       } else {
         setPureProxies((prev) => [...prev, result]);
       }
-      console.log("handleClick 05");
     } catch (error) {
       console.error("Failed to create pure proxy:", error);
     } finally {
