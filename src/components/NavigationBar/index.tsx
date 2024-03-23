@@ -3,7 +3,7 @@ import { IWeb3ConnectedContextState } from "../../utils/types";
 import { SignerSelector } from "../SignerSelector";
 import { AppBar, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { useApi } from "../hooks/useApi";
+import { useApi } from "../../hooks/useApi";
 
 export const Wrapper = styled("div")(() => ({
   display: "flex",

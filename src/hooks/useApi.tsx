@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ApiPromise, WsProvider } from "@polkadot/api";
-import { NODE_ENDPOINT } from "../../utils/constants";
-import { INetwork } from "../../utils/types";
+import { NODE_ENDPOINT } from "../utils/constants";
+import { INetwork } from "../utils/types";
 
 interface IState {
   api: ApiPromise | null;
