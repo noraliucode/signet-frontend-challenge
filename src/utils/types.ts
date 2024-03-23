@@ -50,3 +50,12 @@ export const WALLETS = [
     url: "https://www.talisman.xyz/",
   },
 ];
+
+type AnonymousData = {
+  pure: string;
+  who: string;
+};
+
+export type AnonymousEvent = {
+  data: AnonymousData;
+};

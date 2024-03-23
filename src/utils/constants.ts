@@ -13,3 +13,10 @@ export const NODE_ENDPOINT = {
   POLKADOT,
   KABOCHA,
 };
+export const DECIMALS = {
+  ROCOCO: 12,
+  WESTEND: 12,
+  KUSAMA: 12,
+  KABOCHA: 12,
+  POLKADOT: 10,
+};

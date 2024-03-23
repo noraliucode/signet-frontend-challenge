@@ -34,3 +34,7 @@ export const renderAddress = (
     return encodedAddress;
   }
 };
+
+export const removeComma = (text: string) => {
+  return text.replace(/,/g, "");
+};
