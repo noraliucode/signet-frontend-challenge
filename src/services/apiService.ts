@@ -56,6 +56,19 @@ class APIService {
     const proxyNodes = await promise;
     return proxyNodes;
   };
+
+  getBalance = async (address: string) => {
+    const { parentHash } = await this.api.rpc.chain.getHeader();
+    const apiAt = await this.api.at(parentHash);
+    const balance = await apiAt.query.system.account(address);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignores
+    return balance.data.free;
+  };
+
+  getProxyDepositBase = () => {
+    return this.api.consts.proxy.proxyDepositBase.toHuman();
+  };
 }
 
 export { APIService };
