@@ -1,6 +1,7 @@
 import React from "react";
 import { styled } from "@mui/material";
 import { NavigationBar } from "../components/NavigationBar";
+import PureProxyManager from "../components/PureProxyManager";
 
 export const StyledText = styled("div")(() => ({
   color: "white",
@@ -14,6 +15,7 @@ const Home = () => {
   return (
     <div>
       <NavigationBar />
+      <PureProxyManager />
     </div>
   );
 };

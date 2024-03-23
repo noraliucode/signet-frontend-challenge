@@ -1,5 +1,5 @@
 import { InjectedExtension } from "@polkadot/extension-inject/types";
-import { AnonymousEvent } from "./types";
+import { AnonymousEvent, ProxyAccount } from "./types";
 import { APIService } from "../services/apiService";
 import { removeComma } from "./helpers";
 import { ApiPromise } from "@polkadot/api";
@@ -8,9 +8,8 @@ export const createPure = async (
   api: ApiPromise | null,
   sender: string,
   injector: InjectedExtension,
-  callback?: any,
   setLoading?: (_: boolean) => void
-) => {
+): Promise<ProxyAccount | string | undefined> => {
   try {
     if (!api) return;
     const apiService = new APIService(api);
@@ -26,10 +25,7 @@ export const createPure = async (
     // proxyDepositBase is only for the first time creating proxy
     if (proxyDepositBase && Number(bal) < Number(formattedProxyDepositBase)) {
       setLoading && setLoading(false);
-      return {
-        text: "Insufficient Balance",
-        proxyDepositBase: formattedProxyDepositBase,
-      };
+      return "Insufficient Balance";
     }
     const proxyData = (await apiService.createPureProxy(
       sender,
@@ -39,14 +35,19 @@ export const createPure = async (
     const { pure, who } = proxyData.data;
     real = pure;
 
+    const balance = await apiService.getBalance(pure);
+
     console.log("pure proxy >>", real);
 
     const _callBack = async () => {
-      callback && callback();
       setLoading && setLoading(false);
     };
 
     _callBack();
+    return {
+      address: real,
+      balance: balance.toString(),
+    };
   } catch (error) {
     console.error("createPure error >>", error);
     setLoading && setLoading(false);

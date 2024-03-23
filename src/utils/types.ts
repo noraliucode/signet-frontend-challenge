@@ -59,3 +59,8 @@ type AnonymousData = {
 export type AnonymousEvent = {
   data: AnonymousData;
 };
+
+export interface ProxyAccount {
+  address: string;
+  balance: string;
+}

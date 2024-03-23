@@ -1,5 +1,6 @@
 import { ApiPromise } from "@polkadot/api";
 
+import { PURE_CREATED } from "../utils/constants";
 class APIService {
   api: ApiPromise;
   constructor(api: ApiPromise) {
@@ -23,8 +24,7 @@ class APIService {
                 // @ts-ignore
                 return event.method === PURE_CREATED;
               });
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
+
               resolve(pureCreatedEvent?.toHuman().event?.valueOf());
             }
           }
