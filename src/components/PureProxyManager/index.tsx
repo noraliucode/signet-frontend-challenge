@@ -1,9 +1,29 @@
 import React, { useState } from "react";
-import { Button, List, ListItem, ListItemText, Snackbar } from "@mui/material";
+import {
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  Snackbar,
+  styled,
+} from "@mui/material";
 import { createPure } from "../../utils/main";
 import { useWeb3ConnectedContext } from "../../context/Web3ConnectedContext";
 import { IWeb3ConnectedContextState, ProxyAccount } from "../../utils/types";
 import { useApi } from "../../hooks/useApi";
+
+export const Container = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "flex-start",
+  alignItems: "center",
+  marginTop: "100px",
+  padding: theme.spacing(2),
+  "@media (max-width:600px)": {
+    padding: theme.spacing(1),
+    marginTop: "50px",
+  },
+}));
 
 const PureProxyManager: React.FC = () => {
   const { signer, injector, network }: IWeb3ConnectedContextState =
@@ -50,7 +70,7 @@ const PureProxyManager: React.FC = () => {
   );
 
   return (
-    <div style={{ marginTop: "200px" }}>
+    <Container>
       <Snackbar
         anchorOrigin={{
           vertical: "top",
@@ -59,11 +79,12 @@ const PureProxyManager: React.FC = () => {
         open={open}
         message={message}
       />
-      <Button variant="contained" onClick={handleClick}>
+      <h1>Pure Proxy Manager</h1>
+      <Button variant="contained" onClick={handleClick} sx={{ mt: 2 }}>
         Create Pure Proxy
       </Button>
       {renderProxies()}
-    </div>
+    </Container>
   );
 };
 
