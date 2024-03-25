@@ -80,9 +80,13 @@ const PureProxyManager: React.FC = () => {
         message={message}
       />
       <h1>Pure Proxy Manager</h1>
-      <Button variant="contained" onClick={handleClick} sx={{ mt: 2 }}>
-        Create Pure Proxy
-      </Button>
+      {signer ? (
+        <Button variant="contained" onClick={handleClick} sx={{ mt: 2 }}>
+          Create Pure Proxy
+        </Button>
+      ) : (
+        "Please connect to the wallet"
+      )}
       {renderProxies()}
     </Container>
   );
