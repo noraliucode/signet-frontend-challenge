@@ -8,8 +8,9 @@ export const createPure = async (
   api: ApiPromise | null,
   sender: string,
   injector: InjectedExtension,
-  setLoading?: (_: boolean) => void
-): Promise<ProxyAccount | string | undefined> => {
+  setLoading: (_: boolean) => void,
+  setMessage?: (_: string) => void
+): Promise<ProxyAccount | undefined> => {
   try {
     if (!api) return;
     const apiService = new APIService(api);
@@ -24,8 +25,11 @@ export const createPure = async (
 
     // proxyDepositBase is only for the first time creating proxy
     if (proxyDepositBase && Number(bal) < Number(formattedProxyDepositBase)) {
-      setLoading && setLoading(false);
-      return "Insufficient Balance";
+      setMessage && setMessage("Insufficient Balance!");
+      setTimeout(() => {
+        setLoading && setLoading(false);
+      }, 2000);
+      return;
     }
     const proxyData = (await apiService.createPureProxy(
       sender,
