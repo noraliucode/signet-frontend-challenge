@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.network-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.selector-image {
+  width: 12px;
+  transform: rotate(90deg);
+}

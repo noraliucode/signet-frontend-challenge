@@ -7,6 +7,7 @@ export const KUSAMA = "wss://kusama-rpc.polkadot.io";
 export const POLKADOT = "wss://rpc.polkadot.io";
 export const KABOCHA = "wss://kabocha.jelliedowl.net";
 export const PURE_CREATED = "PureCreated";
+const assetPath = "/assets/networks/";
 export const NODE_ENDPOINT = {
   ROCOCO,
   WESTEND,
@@ -21,3 +22,9 @@ export const DECIMALS = {
   KABOCHA: 12,
   POLKADOT: 10,
 };
+export const NETWORKS = [
+  // { network: "KUSAMA", icon: `${assetPath}kusama.gif` },
+  // { network: "POLKADOT", icon: `${assetPath}polkadot.svg` },
+  { network: "ROCOCO", icon: `${assetPath}rococo.svg` },
+  { network: "WESTEND", icon: `${assetPath}westend.svg` },
+];
